@@ -1,0 +1,13 @@
+global:
+    scrape_interval: 15s
+
+    external_labels:
+        monitor: 'lighthouse-docker'
+
+scrape_configs:
+    - job_name: 'local-lighthouse'
+
+      scrape_interval: 5s
+
+      static_configs:
+          - targets: ['beacon_node:5052']

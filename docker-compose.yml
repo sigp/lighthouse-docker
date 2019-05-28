@@ -1,6 +1,25 @@
 version: "3.7"
 services:
-    beacon_node:
+    prometheus:
         build:
             context: .
-        command: sh run_node.sh
+            dockerfile: Dockerfile-Prometheus
+        ports:
+            - 9090:9090
+    grafana:
+        build:
+            context: grafana
+        ports:
+            - 3000:3000
+    beacon_node:
+        build:
+            context: lighthouse
+        command: sh run_beacon_node.sh
+    validator_client:
+        build:
+            context: lighthouse
+        environment:
+            BEACON_NODE: "beacon_node"
+            FIRST_VALIDATOR: 0
+            LAST_VALIDATOR: 16
+        command: sh run_validator_client.sh
