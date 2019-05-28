@@ -1,0 +1,6 @@
+version: "3.7"
+services:
+    beacon_node:
+        build:
+            context: .
+        command: sh run_node.sh
