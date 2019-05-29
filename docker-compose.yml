@@ -2,13 +2,16 @@ version: "3.7"
 services:
     prometheus:
         build:
-            context: .
-            dockerfile: Dockerfile-Prometheus
+            context: prometheus
+        volumes:
+            - prometheus-data:/prometheus
         ports:
             - 9090:9090
     grafana:
         build:
             context: grafana
+        volumes:
+            - grafana-data:/var/lib/grafana
         ports:
             - 3000:3000
     beacon_node:
@@ -23,3 +26,7 @@ services:
             FIRST_VALIDATOR: 0
             LAST_VALIDATOR: 16
         command: sh run_validator_client.sh
+
+volumes:
+    grafana-data:
+    prometheus-data:
