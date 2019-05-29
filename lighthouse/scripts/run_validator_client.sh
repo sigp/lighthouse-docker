@@ -1,15 +1,7 @@
-cd lighthouse
-
-cargo run \
-	--bin account_manager \
-	--release \
-	-- \
+./lighthouse/target/release/account_manager \
 	generate_deterministic \
 	-i $FIRST_VALIDATOR \
 	-j $LAST_VALIDATOR \
 
-cargo run \
-	--bin validator_client \
-	--release \
-	-- \
+./lighthouse/target/release/validator_client \
 	--server $BEACON_NODE:5051

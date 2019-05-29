@@ -14,10 +14,16 @@ services:
             - grafana-data:/var/lib/grafana
         ports:
             - 3000:3000
-    beacon_node:
+    boot_node:
         build:
             context: lighthouse
         command: sh run_beacon_node.sh
+    beacon_node:
+        build:
+            context: lighthouse
+        depends_on:
+            - boot_node
+        command: sh run_beacon_node.sh --boot-nodes /dns4/boot_node/tcp/9000
     validator_client:
         build:
             context: lighthouse
@@ -25,6 +31,8 @@ services:
             BEACON_NODE: "beacon_node"
             FIRST_VALIDATOR: 0
             LAST_VALIDATOR: 16
+        depends_on:
+            - beacon_node
         command: sh run_validator_client.sh
 
 volumes:
