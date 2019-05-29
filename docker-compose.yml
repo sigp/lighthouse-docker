@@ -23,14 +23,17 @@ services:
             context: lighthouse
         depends_on:
             - boot_node
-        command: sh run_beacon_node.sh --boot-nodes /dns4/boot_node/tcp/9000
+        command: sh run_beacon_node.sh
+        environment:
+            BOOT_NODES: "/dns4/boot_node/tcp/9000"
+        command: sh run_beacon_node.sh
     validator_client:
         build:
             context: lighthouse
         environment:
             BEACON_NODE: "beacon_node"
             FIRST_VALIDATOR: 0
-            LAST_VALIDATOR: 16
+            NUM_VALIDATORS: 16
         depends_on:
             - beacon_node
         command: sh run_validator_client.sh
