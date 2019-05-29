@@ -8,4 +8,10 @@ scrape_configs:
     - job_name: 'local-lighthouse'
       scrape_interval: 5s
       static_configs:
-          - targets: ['beacon_node:5052', 'boot_node:5052']
+          - targets: [
+              'beacon_node_1:5052',
+              'beacon_node_2:5052',
+              'beacon_node_3:5052',
+              'beacon_node_4:5052',
+              'boot_node:5052'
+            ]
