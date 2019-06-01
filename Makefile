@@ -1,2 +1,3 @@
 build-from-github :
-	docker build ./lighthouse -t "lighthouse:prebuilt" --no-cache
+	docker build ./lighthouse/master -t "lighthouse:master"
+	docker build ./lighthouse/feature -t "lighthouse:feature" --no-cache

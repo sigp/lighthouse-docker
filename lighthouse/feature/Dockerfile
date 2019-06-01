@@ -1,9 +1,6 @@
-FROM sigp/lighthouse
+FROM lighthouse:master
 
-RUN git clone \
-	--single-branch \
-	--branch docker-env \
-	http://github.com/sigp/lighthouse.git
+RUN cd lighthouse && git checkout docker-env
 
 RUN cd lighthouse && cargo fetch
 RUN cd lighthouse && cargo build --release --bin beacon_node

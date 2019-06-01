@@ -15,14 +15,10 @@ services:
         ports:
             - 3000:3000
     boot_node:
-        image: lighthouse:prebuilt
-        build:
-            context: lighthouse
+        image: lighthouse:feature
         command: sh run_beacon_node.sh
     beacon_node_1:
-        image: lighthouse:prebuilt
-        build:
-            context: lighthouse
+        image: lighthouse:feature
         depends_on:
             - boot_node
         command: sh run_beacon_node.sh
@@ -30,9 +26,7 @@ services:
             BOOT_NODES: "/dns4/boot_node/tcp/9000"
         command: sh run_beacon_node.sh
     beacon_node_2:
-        image: lighthouse:prebuilt
-        build:
-            context: lighthouse
+        image: lighthouse:feature
         depends_on:
             - boot_node
         command: sh run_beacon_node.sh
@@ -40,9 +34,7 @@ services:
             BOOT_NODES: "/dns4/boot_node/tcp/9000"
         command: sh run_beacon_node.sh
     beacon_node_3:
-        image: lighthouse:prebuilt
-        build:
-            context: lighthouse
+        image: lighthouse:feature
         depends_on:
             - boot_node
         command: sh run_beacon_node.sh
@@ -50,9 +42,7 @@ services:
             BOOT_NODES: "/dns4/boot_node/tcp/9000"
         command: sh run_beacon_node.sh
     beacon_node_4:
-        image: lighthouse:prebuilt
-        build:
-            context: lighthouse
+        image: lighthouse:feature
         depends_on:
             - boot_node
         command: sh run_beacon_node.sh
@@ -60,36 +50,28 @@ services:
             BOOT_NODES: "/dns4/boot_node/tcp/9000"
         command: sh run_beacon_node.sh
     validator_client_1:
-        image: lighthouse:prebuilt
-        build:
-            context: lighthouse
+        image: lighthouse:feature
         environment:
             BEACON_NODE: "beacon_node_1"
             FIRST_VALIDATOR: 0
             NUM_VALIDATORS: 4
         command: sh run_validator_client.sh
     validator_client_2:
-        image: lighthouse:prebuilt
-        build:
-            context: lighthouse
+        image: lighthouse:feature
         environment:
             BEACON_NODE: "beacon_node_2"
             FIRST_VALIDATOR: 4
             NUM_VALIDATORS: 4
         command: sh run_validator_client.sh
     validator_client_3:
-        image: lighthouse:prebuilt
-        build:
-            context: lighthouse
+        image: lighthouse:feature
         environment:
             BEACON_NODE: "beacon_node_3"
             FIRST_VALIDATOR: 8
             NUM_VALIDATORS: 4
         command: sh run_validator_client.sh
     validator_client_4:
-        image: lighthouse:prebuilt
-        build:
-            context: lighthouse
+        image: lighthouse:feature
         environment:
             BEACON_NODE: "beacon_node_4"
             FIRST_VALIDATOR: 12
