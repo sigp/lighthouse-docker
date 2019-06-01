@@ -15,8 +15,15 @@ E.g., on Arch: `$ pacman -S docker docker-compose`
 ### Bringing the Environment Up
 
 ```
+$ make
 $ docker-compose up
 ```
+
+#### Rebuilding after Github Updates
+
+Due to Docker's caching, the lighthouse image wont necessarily rebuild whenever
+Github is updated. To rebuild after a Github update, run `$ make` again.
+
 
 ### Interfaces
 
