@@ -18,6 +18,8 @@ services:
         image: lighthouse:feature
         command: sh run_beacon_node.sh
         ports:
+            - 9000:9000
+            - 5051:5051
             - 5052:5052
     beacon_node_1:
         image: lighthouse:feature
