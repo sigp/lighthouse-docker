@@ -10,5 +10,5 @@ fi
 	--rpc-address 0.0.0.0 \
 	--http \
 	--http-address 0.0.0.0 \
-	--listen-address /ip4/127.0.0.1/tcp/9999 \
+	--listen-address /ip4/0.0.0.0/tcp/9000 \
 	$BOOT_NODES_FLAG
