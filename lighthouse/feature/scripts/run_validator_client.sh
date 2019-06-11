@@ -6,3 +6,4 @@
 
 ./lighthouse/target/release/validator_client \
 	--server $BEACON_NODE:5051
+	--eth2-spec /root/.lighthouse/eth2-spec.toml
