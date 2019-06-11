@@ -1,0 +1,19 @@
+data_dir = ".lighthouse"
+db_type = "disk"
+db_name = "chain_db"
+
+[network]
+listen_addresses = ["/ip4/127.0.0.1/tcp/9000"]
+boot_nodes = []
+client_version = "Lighthouse/v0.1.0-unstable/x86_64-linux"
+topics = ["beacon_chain"]
+
+[rpc]
+enabled = false
+listen_address = "127.0.0.1"
+port = 5051
+
+[http]
+enabled = false
+listen_address = "127.0.0.1"
+listen_port = "5052"

@@ -1,0 +1,3 @@
+data_dir = ".lighthouse-validator"
+server = "localhost:5051"
+slots_per_epoch = 64

@@ -1,4 +1,5 @@
 ./lighthouse/target/release/account_manager \
+	-d ~/.lighthouse-validator \
 	generate_deterministic \
 	-i $FIRST_VALIDATOR \
 	-n $NUM_VALIDATORS \

@@ -8,4 +8,12 @@ RUN cd lighthouse && cargo build --release --bin beacon_node
 RUN cd lighthouse && cargo build --release --bin validator_client
 RUN cd lighthouse && cargo build --release --bin account_manager
 
+RUN mkdir ~/.lighthouse
+RUN mkdir ~/.lighthouse-validator
+
+COPY ./configs/beacon-node.toml ~/.lighthouse
+COPY ./configs/eth2-spec.toml ~/.lighthouse
+COPY ./configs/validator-client.toml ~/.lighthouse-validator
+COPY ./configs/eth2-spec.toml ~/.lighthouse-validator
+
 COPY ./scripts/ .
