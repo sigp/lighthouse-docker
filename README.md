@@ -28,6 +28,8 @@ Github is updated. To rebuild after a Github update, run `$ make` again.
 ### Interfaces
 
 - View and manage dashboards at [localhost:3000](http://localhost:3000).
+  - Username: `admin`
+  - Password: `cats`
 - Inspect Prometheus at [localhost:9090](http://localhost:9090).
 
 
