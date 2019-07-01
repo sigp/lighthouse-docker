@@ -1,7 +1,13 @@
-if [ -z "$BOOT_NODES" ]; then
-	BOOT_NODES_FLAG=""
+if [ -f /bootnode/enr.dat ]; then
+	BOOT_NODES_FLAG="--boot-nodes $(cat /bootnode/enr.dat)"
 else
-	BOOT_NODES_FLAG="--boot-nodes ${BOOT_NODES}"
+	BOOT_NODES_FLAG=""
+fi
+
+if [ -z "$DISCOVERY_ADDR" ]; then
+	DISCOVERY_ADDR_FLAG=""
+else
+	DISCOVERY_ADDR_FLAG="--discovery-address ${DISCOVERY_ADDR}"
 fi
 
 ./lighthouse/target/release/beacon_node \
@@ -10,5 +16,6 @@ fi
 	--rpc-address 0.0.0.0 \
 	--http \
 	--http-address 0.0.0.0 \
-	--listen-address /ip4/0.0.0.0/tcp/9000 \
-	$BOOT_NODES_FLAG
+	--listen-address 0.0.0.0 \
+	$BOOT_NODES_FLAG \
+	$DISCOVERY_ADDR_FLAG

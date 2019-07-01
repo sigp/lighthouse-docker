@@ -1,6 +1,6 @@
 FROM lighthouse:master
 
-RUN cd lighthouse && git checkout docker-env
+RUN cd lighthouse && git checkout network-dev
 RUN cd lighthouse && git pull
 
 RUN cd lighthouse && cargo fetch

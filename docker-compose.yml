@@ -17,41 +17,44 @@ services:
     boot_node:
         image: lighthouse:feature
         command: sh run_beacon_node.sh
+        volumes:
+            - boot-node:/root/.lighthouse/network
         ports:
             - 9000:9000
             - 5051:5051
             - 5052:5052
+        environment:
+            DISCOVERY_ADDR: "172.20.0.250"
+        networks:
+            default:
+                ipv4_address: 172.20.0.250
     beacon_node_1:
         image: lighthouse:feature
         depends_on:
             - boot_node
-        command: sh run_beacon_node.sh
-        environment:
-            BOOT_NODES: "/dns4/boot_node/tcp/9000"
+        volumes:
+            - boot-node:/bootnode
         command: sh run_beacon_node.sh
     beacon_node_2:
         image: lighthouse:feature
         depends_on:
             - boot_node
-        command: sh run_beacon_node.sh
-        environment:
-            BOOT_NODES: "/dns4/boot_node/tcp/9000"
+        volumes:
+            - boot-node:/bootnode
         command: sh run_beacon_node.sh
     beacon_node_3:
         image: lighthouse:feature
         depends_on:
             - boot_node
-        command: sh run_beacon_node.sh
-        environment:
-            BOOT_NODES: "/dns4/boot_node/tcp/9000"
+        volumes:
+            - boot-node:/bootnode
         command: sh run_beacon_node.sh
     beacon_node_4:
         image: lighthouse:feature
         depends_on:
             - boot_node
-        command: sh run_beacon_node.sh
-        environment:
-            BOOT_NODES: "/dns4/boot_node/tcp/9000"
+        volumes:
+            - boot-node:/bootnode
         command: sh run_beacon_node.sh
     validator_client_1:
         image: lighthouse:feature
@@ -85,3 +88,11 @@ services:
 volumes:
     grafana-data:
     prometheus-data:
+    boot-node:
+
+networks:
+    default:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.20.0.0/24
