@@ -1,7 +1,7 @@
 FROM lighthouse:master
 
-RUN cd lighthouse && git checkout network-dev
 RUN cd lighthouse && git pull
+RUN cd lighthouse && git checkout sync-bugs
 
 RUN cd lighthouse && cargo fetch
 RUN cd lighthouse && cargo build --release --bin beacon_node
