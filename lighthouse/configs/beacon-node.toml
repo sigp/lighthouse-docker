@@ -1,12 +1,18 @@
 data_dir = ".lighthouse"
 db_type = "disk"
 db_name = "chain_db"
+log_file = ""
 
 [network]
-listen_addresses = ["/ip4/127.0.0.1/tcp/9000"]
+network_dir = "/home/paul/.lighthouse/network"
+listen_address = "127.0.0.1"
+libp2p_port = 9000
+discovery_address = "127.0.0.1"
+discovery_port = 9000
+max_peers = 10
 boot_nodes = []
 client_version = "Lighthouse/v0.1.0-unstable/x86_64-linux"
-topics = ["beacon_chain"]
+topics = []
 
 [rpc]
 enabled = false

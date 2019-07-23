@@ -1,3 +1,4 @@
 data_dir = ".lighthouse-validator"
+log_file = ""
 server = "localhost:5051"
 slots_per_epoch = 64

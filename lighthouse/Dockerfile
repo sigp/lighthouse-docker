@@ -1,12 +1,9 @@
-FROM lighthouse:master
+FROM sigp/lighthouse
 
-RUN cd lighthouse && git pull
-RUN cd lighthouse && git checkout sync-bugs
+ENV CARGO_HOME /root/.cargo
 
-RUN cd lighthouse && cargo fetch
-RUN cd lighthouse && cargo build --release --bin beacon_node
-RUN cd lighthouse && cargo build --release --bin validator_client
-RUN cd lighthouse && cargo build --release --bin account_manager
+VOLUME /root/.cargo
+VOLUME /root/lighthouse
 
 RUN mkdir /root/.lighthouse
 RUN mkdir /root/.lighthouse-validator

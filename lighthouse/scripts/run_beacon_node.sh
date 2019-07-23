@@ -10,7 +10,7 @@ else
 	DISCOVERY_ADDR_FLAG="--discovery-address ${DISCOVERY_ADDR}"
 fi
 
-./lighthouse/target/release/beacon_node \
+/root/lighthouse/target/release/beacon_node \
 	--recent-genesis \
 	--rpc \
 	--rpc-address 0.0.0.0 \
