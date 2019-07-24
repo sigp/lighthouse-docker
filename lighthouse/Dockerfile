@@ -1,14 +1,12 @@
-FROM lighthouse:master
+FROM sigp/lighthouse
 
-RUN cd lighthouse && git checkout docker-env
-RUN cd lighthouse && git pull
+ENV CARGO_HOME /root/.cargo
 
-RUN cd lighthouse && cargo fetch
-RUN cd lighthouse && cargo build --release --bin beacon_node
-RUN cd lighthouse && cargo build --release --bin validator_client
-RUN cd lighthouse && cargo build --release --bin account_manager
+VOLUME /root/.cargo
+VOLUME /root/lighthouse
+VOLUME /root/boot-node
+VOLUME /root/network
 
-RUN mkdir /root/.lighthouse
 RUN mkdir /root/.lighthouse-validator
 
 COPY ./configs/beacon-node.toml /root/.lighthouse/beacon-node.toml

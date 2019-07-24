@@ -7,6 +7,8 @@ services:
             - prometheus-data:/prometheus
         ports:
             - 9090:9090
+        networks:
+            - beacon_nodes
     grafana:
         build:
             context: grafana
@@ -14,68 +16,111 @@ services:
             - grafana-data:/var/lib/grafana
         ports:
             - 3000:3000
+        networks:
+            - beacon_nodes
     boot_node:
-        image: lighthouse:feature
-        command: sh run_beacon_node.sh
+        image: lighthouse:docker-testnet
+        volumes:
+            - ./lighthouse/repo:/root/lighthouse
+            - ./lighthouse/cargo-cache:/root/.cargo
+            - ./lighthouse/boot-node:/root/network
+        networks:
+            beacon_nodes:
+                ipv4_address: 172.42.0.250
         ports:
             - 9000:9000
             - 5051:5051
             - 5052:5052
-    beacon_node_1:
-        image: lighthouse:feature
-        depends_on:
-            - boot_node
         command: sh run_beacon_node.sh
         environment:
-            BOOT_NODES: "/dns4/boot_node/tcp/9000"
+            DISCOVERY_ADDR: "172.42.0.250"
+    beacon_node_1:
+        image: lighthouse:docker-testnet
+        volumes:
+            - ./lighthouse/repo:/root/lighthouse
+            - ./lighthouse/cargo-cache:/root/.cargo
+            - ./lighthouse/boot-node:/root/boot-node
+        networks:
+            - beacon_nodes
+        depends_on:
+            - boot_node
         command: sh run_beacon_node.sh
     beacon_node_2:
-        image: lighthouse:feature
+        image: lighthouse:docker-testnet
+        volumes:
+            - ./lighthouse/repo:/root/lighthouse
+            - ./lighthouse/cargo-cache:/root/.cargo
+            - ./lighthouse/boot-node:/root/boot-node
+        networks:
+            - beacon_nodes
         depends_on:
             - boot_node
-        command: sh run_beacon_node.sh
-        environment:
-            BOOT_NODES: "/dns4/boot_node/tcp/9000"
         command: sh run_beacon_node.sh
     beacon_node_3:
-        image: lighthouse:feature
+        image: lighthouse:docker-testnet
+        volumes:
+            - ./lighthouse/repo:/root/lighthouse
+            - ./lighthouse/cargo-cache:/root/.cargo
+            - ./lighthouse/boot-node:/root/boot-node
+        networks:
+            - beacon_nodes
         depends_on:
             - boot_node
-        command: sh run_beacon_node.sh
-        environment:
-            BOOT_NODES: "/dns4/boot_node/tcp/9000"
         command: sh run_beacon_node.sh
     beacon_node_4:
-        image: lighthouse:feature
+        image: lighthouse:docker-testnet
+        volumes:
+            - ./lighthouse/repo:/root/lighthouse
+            - ./lighthouse/cargo-cache:/root/.cargo
+            - ./lighthouse/boot-node:/root/boot-node
+        networks:
+            - beacon_nodes
         depends_on:
             - boot_node
         command: sh run_beacon_node.sh
-        environment:
-            BOOT_NODES: "/dns4/boot_node/tcp/9000"
-        command: sh run_beacon_node.sh
     validator_client_1:
-        image: lighthouse:feature
+        image: lighthouse:docker-testnet
+        volumes:
+            - ./lighthouse/repo:/root/lighthouse
+            - ./lighthouse/cargo-cache:/root/.cargo
+        networks:
+            - beacon_nodes
         environment:
             BEACON_NODE: "beacon_node_1"
             FIRST_VALIDATOR: 0
             NUM_VALIDATORS: 4
         command: sh run_validator_client.sh
     validator_client_2:
-        image: lighthouse:feature
+        image: lighthouse:docker-testnet
+        volumes:
+            - ./lighthouse/repo:/root/lighthouse
+            - ./lighthouse/cargo-cache:/root/.cargo
+        networks:
+            - beacon_nodes
         environment:
             BEACON_NODE: "beacon_node_2"
             FIRST_VALIDATOR: 4
             NUM_VALIDATORS: 4
         command: sh run_validator_client.sh
     validator_client_3:
-        image: lighthouse:feature
+        image: lighthouse:docker-testnet
+        volumes:
+            - ./lighthouse/repo:/root/lighthouse
+            - ./lighthouse/cargo-cache:/root/.cargo
+        networks:
+            - beacon_nodes
         environment:
             BEACON_NODE: "beacon_node_3"
             FIRST_VALIDATOR: 8
             NUM_VALIDATORS: 4
         command: sh run_validator_client.sh
     validator_client_4:
-        image: lighthouse:feature
+        image: lighthouse:docker-testnet
+        volumes:
+            - ./lighthouse/repo:/root/lighthouse
+            - ./lighthouse/cargo-cache:/root/.cargo
+        networks:
+            - beacon_nodes
         environment:
             BEACON_NODE: "beacon_node_4"
             FIRST_VALIDATOR: 12
@@ -85,3 +130,10 @@ services:
 volumes:
     grafana-data:
     prometheus-data:
+
+networks:
+    beacon_nodes:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.42.0.0/24

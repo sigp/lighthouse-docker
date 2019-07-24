@@ -1,0 +1,3 @@
+[submodule "lighthouse/repo"]
+	path = lighthouse/repo
+	url = git@github.com:sigp/lighthouse.git

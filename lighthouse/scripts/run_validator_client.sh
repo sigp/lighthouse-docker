@@ -1,9 +1,9 @@
-./lighthouse/target/release/account_manager \
+/root/lighthouse/target/release/account_manager \
 	-d ~/.lighthouse-validator \
 	generate_deterministic \
 	-i $FIRST_VALIDATOR \
 	-n $NUM_VALIDATORS \
 
-./lighthouse/target/release/validator_client \
+/root/lighthouse/target/release/validator_client \
 	--server $BEACON_NODE:5051
 	--eth2-spec /root/.lighthouse/eth2-spec.toml

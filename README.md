@@ -14,6 +14,13 @@ E.g., on Arch: `$ pacman -S docker docker-compose`
 
 ### Bringing the Environment Up
 
+The
+[sigp/lighthouse](http://lighthouse-docs.sigmaprime.io/compare_fields/index.html)
+repository is a git submodule, ensure you initialize it with `$ git submodule
+init`.
+
+To start the enviroment, run:
+
 ```
 $ make
 $ docker-compose up
@@ -21,9 +28,7 @@ $ docker-compose up
 
 #### Rebuilding after Github Updates
 
-Due to Docker's caching, the lighthouse image wont necessarily rebuild whenever
-Github is updated. To rebuild after a Github update, run `$ make` again.
-
+To re-compile the lighthouse binaries after modifying `lighthouse/repo`, run `$ make` again.
 
 ### Interfaces
 
