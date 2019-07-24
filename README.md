@@ -26,9 +26,9 @@ $ make
 $ docker-compose up
 ```
 
-#### Rebuilding after Github Updates
+#### Rebuilding after Updates
 
-To re-compile the lighthouse binaries after modifying `lighthouse/repo`, run `$ make` again.
+To re-compile the lighthouse binaries after modifying `lighthouse/repo` or any other component, run `$ make` again.
 
 ### Interfaces
 
