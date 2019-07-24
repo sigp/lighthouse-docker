@@ -4,8 +4,9 @@ ENV CARGO_HOME /root/.cargo
 
 VOLUME /root/.cargo
 VOLUME /root/lighthouse
+VOLUME /root/boot-node
+VOLUME /root/network
 
-RUN mkdir /root/.lighthouse
 RUN mkdir /root/.lighthouse-validator
 
 COPY ./configs/beacon-node.toml /root/.lighthouse/beacon-node.toml

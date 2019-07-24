@@ -1,5 +1,5 @@
-if [ -f /bootnode/enr.dat ]; then
-	BOOT_NODES_FLAG="--boot-nodes $(cat /bootnode/enr.dat)"
+if [ -f /root/boot-node/enr.dat ]; then
+	BOOT_NODES_FLAG="--boot-nodes $(cat /root/boot-node/enr.dat)"
 else
 	BOOT_NODES_FLAG=""
 fi
@@ -14,6 +14,8 @@ fi
 	--recent-genesis \
 	--rpc \
 	--rpc-address 0.0.0.0 \
+	--db disk \
+	--network-dir /root/network \
 	--http \
 	--http-address 0.0.0.0 \
 	--listen-address 0.0.0.0 \
