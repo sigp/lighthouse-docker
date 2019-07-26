@@ -19,5 +19,6 @@ fi
 	--http \
 	--http-address 0.0.0.0 \
 	--listen-address 0.0.0.0 \
+	--debug-level warn
 	$BOOT_NODES_FLAG \
 	$DISCOVERY_ADDR_FLAG
