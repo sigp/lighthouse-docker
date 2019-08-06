@@ -6,7 +6,7 @@ spec_constants = "minimal"
 
 [genesis_state]
 type = "RecentGenesis"
-validator_count = 24
+validator_count = 16
 
 [network]
 network_dir = "/home/paul/.lighthouse/network"
