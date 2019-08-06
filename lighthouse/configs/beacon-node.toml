@@ -2,12 +2,17 @@ data_dir = ".lighthouse"
 db_type = "disk"
 db_name = "chain_db"
 log_file = ""
+spec_constants = "minimal"
+
+[genesis_state]
+type = "RecentGenesis"
+validator_count = 24
 
 [network]
 network_dir = "/home/paul/.lighthouse/network"
-listen_address = "127.0.0.1"
+listen_address = "0.0.0.0"
 libp2p_port = 9000
-discovery_address = "127.0.0.1"
+discovery_address = "0.0.0.0"
 discovery_port = 9000
 max_peers = 10
 boot_nodes = []
@@ -23,3 +28,8 @@ port = 5051
 enabled = false
 listen_address = "127.0.0.1"
 listen_port = "5052"
+
+[rest_api]
+enabled = true
+listen_address = "127.0.0.1"
+port = 1248
