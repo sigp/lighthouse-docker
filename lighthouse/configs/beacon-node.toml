@@ -21,10 +21,10 @@ topics = []
 
 [rpc]
 enabled = false
-listen_address = "127.0.0.1"
+listen_address = "0.0.0.0"
 port = 5051
 
 [rest_api]
 enabled = true
-listen_address = "127.0.0.1"
+listen_address = "0.0.0.0"
 port = 5052

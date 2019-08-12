@@ -16,8 +16,6 @@ fi
 	--rpc-address 0.0.0.0 \
 	--db disk \
 	--network-dir /root/network \
-	--http \
-	--http-address 0.0.0.0 \
 	--listen-address 0.0.0.0 \
 	--debug-level warn \
 	$BOOT_NODES_FLAG \
