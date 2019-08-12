@@ -24,12 +24,7 @@ enabled = false
 listen_address = "127.0.0.1"
 port = 5051
 
-[http]
-enabled = false
-listen_address = "127.0.0.1"
-listen_port = "5052"
-
 [rest_api]
 enabled = true
 listen_address = "127.0.0.1"
-port = 1248
+port = 5052
