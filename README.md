@@ -16,8 +16,7 @@ E.g., on Arch: `$ pacman -S docker docker-compose`
 
 The
 [sigp/lighthouse](http://lighthouse-docs.sigmaprime.io/compare_fields/index.html)
-repository is a git submodule, ensure you initialize it with `$ git submodule
-init`.
+repository is a git submodule, ensure you initialize it with `$ git submodule update --init`. If you run into issues, see [Troubleshooting Guide](docs/troubleshooting.md) for help.
 
 To start the enviroment, run:
 
