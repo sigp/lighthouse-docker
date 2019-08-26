@@ -11,11 +11,6 @@ else
 fi
 
 /root/lighthouse/target/release/beacon_node \
-	--rpc \
-	--rpc-address 0.0.0.0 \
-	--db disk \
-	--network-dir /root/network \
-	--listen-address 0.0.0.0 \
 	--debug-level warn \
 	$BOOT_NODES_FLAG \
 	$DISCOVERY_ADDR_FLAG \

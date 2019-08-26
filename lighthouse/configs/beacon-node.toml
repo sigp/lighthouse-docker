@@ -5,7 +5,7 @@ log_file = ""
 spec_constants = "minimal"
 
 [network]
-network_dir = "/home/paul/.lighthouse/network"
+network_dir = "/root/network"
 listen_address = "0.0.0.0"
 libp2p_port = 9000
 discovery_address = "0.0.0.0"
