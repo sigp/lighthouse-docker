@@ -11,7 +11,6 @@ else
 fi
 
 /root/lighthouse/target/release/beacon_node \
-	--recent-genesis \
 	--rpc \
 	--rpc-address 0.0.0.0 \
 	--db disk \
@@ -19,4 +18,10 @@ fi
 	--listen-address 0.0.0.0 \
 	--debug-level warn \
 	$BOOT_NODES_FLAG \
-	$DISCOVERY_ADDR_FLAG
+	$DISCOVERY_ADDR_FLAG \
+	testnet \
+	--client-config /root/.lighthouse/beacon-node.toml \
+	--eth2-config /root/.lighthouse/eth2-spec.toml \
+	--force \
+	recent \
+	16 \

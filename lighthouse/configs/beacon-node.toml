@@ -4,10 +4,6 @@ db_name = "chain_db"
 log_file = ""
 spec_constants = "minimal"
 
-[genesis_state]
-type = "RecentGenesis"
-validator_count = 16
-
 [network]
 network_dir = "/home/paul/.lighthouse/network"
 listen_address = "0.0.0.0"
@@ -16,11 +12,12 @@ discovery_address = "0.0.0.0"
 discovery_port = 9000
 max_peers = 10
 boot_nodes = []
+libp2p_nodes = ["/dns4/localhost/tcp/19000"]
 client_version = "Lighthouse/v0.1.0-unstable/x86_64-linux"
 topics = []
 
 [rpc]
-enabled = false
+enabled = true
 listen_address = "0.0.0.0"
 port = 5051
 

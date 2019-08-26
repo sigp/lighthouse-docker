@@ -48,9 +48,9 @@ services:
             beacon_nodes:
                 ipv4_address: 172.42.0.250
         ports:
-            - 9000:9000
-            - 5051:5051
-            - 5052:5052
+            - 19000:9000
+            - 15051:5051
+            - 15052:5052
         command: sh run_beacon_node.sh
         environment:
             DISCOVERY_ADDR: "172.42.0.250"
