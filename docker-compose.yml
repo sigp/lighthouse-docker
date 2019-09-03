@@ -32,7 +32,7 @@ x-beacon_node:
         - beacon_nodes
     depends_on:
         - boot_node
-    command: sh run_beacon_node.sh
+    command: sh run_bootstrapped_node.sh
 
 
 services:
@@ -54,6 +54,7 @@ services:
         command: sh run_beacon_node.sh
         environment:
             DISCOVERY_ADDR: "172.42.0.250"
+            NUM_INITIAL_VALIDATORS: 16
     beacon_node_1:
         << : *beacon_node
     beacon_node_2:

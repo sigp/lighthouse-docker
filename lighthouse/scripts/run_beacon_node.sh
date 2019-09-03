@@ -19,5 +19,5 @@ fi
 	--eth2-config /root/.lighthouse/eth2-spec.toml \
 	--force \
 	recent \
-	16 \
+	$NUM_INITIAL_VALIDATORS \
 	--minutes 1 \
