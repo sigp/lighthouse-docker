@@ -1,5 +1,5 @@
 /root/lighthouse/target/release/beacon_node \
-	--debug-level warn \
+	--debug-level $DEBUG_LEVEL \
 	testnet \
 	--force \
 	bootstrap \

@@ -1,6 +1,6 @@
 /root/lighthouse/target/release/validator_client \
 	--server $BEACON_NODE \
-	--debug-level warn \
+	--debug-level $DEBUG_LEVEL \
 	testnet \
 	-b \
 	insecure \

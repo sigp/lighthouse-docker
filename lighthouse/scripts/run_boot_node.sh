@@ -5,7 +5,7 @@ else
 fi
 
 /root/lighthouse/target/release/beacon_node \
-	--debug-level warn \
+	--debug-level $DEBUG_LEVEL \
 	$DISCOVERY_ADDR_FLAG \
 	testnet \
 	--client-config /root/configs/beacon-node.toml \
