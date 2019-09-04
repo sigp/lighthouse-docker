@@ -1,5 +1,7 @@
+sleep 5s
+
 /root/lighthouse/target/release/validator_client \
-	--server $BEACON_NODE:5051 \
+	--server $BEACON_NODE \
 	--debug-level warn \
 	testnet \
 	-b \

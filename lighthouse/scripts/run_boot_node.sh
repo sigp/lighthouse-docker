@@ -15,8 +15,8 @@ fi
 	$BOOT_NODES_FLAG \
 	$DISCOVERY_ADDR_FLAG \
 	testnet \
-	--client-config /root/.lighthouse/beacon-node.toml \
-	--eth2-config /root/.lighthouse/eth2-spec.toml \
+	--client-config /root/configs/beacon-node.toml \
+	--eth2-config /root/configs/eth2-spec.toml \
 	--force \
 	recent \
 	$NUM_INITIAL_VALIDATORS \

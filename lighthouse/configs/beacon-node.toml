@@ -4,6 +4,9 @@ db_name = "chain_db"
 log_file = ""
 spec_constants = "minimal"
 
+[eth1_backend_method]
+type = "Interop"
+
 [network]
 network_dir = "/root/network"
 listen_address = "0.0.0.0"

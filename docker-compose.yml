@@ -51,7 +51,7 @@ services:
             - 19000:9000
             - 15051:5051
             - 15052:5052
-        command: sh run_beacon_node.sh
+        command: sh run_boot_node.sh
         environment:
             DISCOVERY_ADDR: "172.42.0.250"
             NUM_INITIAL_VALIDATORS: 16
