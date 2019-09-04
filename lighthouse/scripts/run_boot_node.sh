@@ -1,9 +1,3 @@
-if [ -f /root/boot-node/enr.dat ]; then
-	BOOT_NODES_FLAG="--boot-nodes $(cat /root/boot-node/enr.dat)"
-else
-	BOOT_NODES_FLAG=""
-fi
-
 if [ -z "$DISCOVERY_ADDR" ]; then
 	DISCOVERY_ADDR_FLAG=""
 else
@@ -12,7 +6,6 @@ fi
 
 /root/lighthouse/target/release/beacon_node \
 	--debug-level warn \
-	$BOOT_NODES_FLAG \
 	$DISCOVERY_ADDR_FLAG \
 	testnet \
 	--client-config /root/configs/beacon-node.toml \

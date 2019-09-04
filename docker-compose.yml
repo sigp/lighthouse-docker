@@ -43,7 +43,6 @@ services:
         volumes:
             - ./lighthouse/repo:/root/lighthouse
             - ./lighthouse/cargo-cache:/root/.cargo
-            - ./lighthouse/boot-node:/root/network
         networks:
             beacon_nodes:
                 ipv4_address: 172.42.0.250
