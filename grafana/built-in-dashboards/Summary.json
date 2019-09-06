@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 11,
+  "id": 8,
   "links": [],
   "panels": [
     {
@@ -941,7 +941,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "slotclock_present_epoch - 1 - beacon_head_state_current_justified_epoch",
+          "expr": "slotclock_present_epoch - beacon_head_state_current_justified_epoch",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1029,7 +1029,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "slotclock_present_epoch - 1 - beacon_head_state_finalized_epoch",
+          "expr": "slotclock_present_epoch - beacon_head_state_finalized_epoch",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -2587,5 +2587,5 @@
   "timezone": "",
   "title": "Summary",
   "uid": "yY7PIGdZc",
-  "version": 2
+  "version": 1
 }
