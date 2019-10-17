@@ -32,7 +32,9 @@ x-beacon_node:
         - beacon_nodes
     depends_on:
         - boot_node
-    command: sh run_beacon_node.sh
+    command: sh run_bootstrapped_node.sh
+    environment:
+        DEBUG_LEVEL: "warn"
 
 
 services:
@@ -43,17 +45,18 @@ services:
         volumes:
             - ./lighthouse/repo:/root/lighthouse
             - ./lighthouse/cargo-cache:/root/.cargo
-            - ./lighthouse/boot-node:/root/network
         networks:
             beacon_nodes:
                 ipv4_address: 172.42.0.250
         ports:
-            - 9000:9000
-            - 5051:5051
-            - 5052:5052
-        command: sh run_beacon_node.sh
+            - 19000:9000
+            - 15051:5051
+            - 15052:5052
+        command: sh run_boot_node.sh
         environment:
             DISCOVERY_ADDR: "172.42.0.250"
+            NUM_INITIAL_VALIDATORS: 16
+            DEBUG_LEVEL: "warn"
     beacon_node_1:
         << : *beacon_node
     beacon_node_2:
@@ -68,24 +71,28 @@ services:
             BEACON_NODE: "beacon_node_1"
             FIRST_VALIDATOR: 0
             NUM_VALIDATORS: 4
+            DEBUG_LEVEL: "warn"
     validator_client_2:
         << : *validator_client
         environment:
             BEACON_NODE: "beacon_node_2"
             FIRST_VALIDATOR: 4
             NUM_VALIDATORS: 4
+            DEBUG_LEVEL: "warn"
     validator_client_3:
         << : *validator_client
         environment:
             BEACON_NODE: "beacon_node_3"
             FIRST_VALIDATOR: 8
             NUM_VALIDATORS: 4
+            DEBUG_LEVEL: "warn"
     validator_client_4:
         << : *validator_client
         environment:
             BEACON_NODE: "beacon_node_4"
             FIRST_VALIDATOR: 12
             NUM_VALIDATORS: 4
+            DEBUG_LEVEL: "warn"
     #
     # Metrics services -- provides a web GUI to monitor the testnet.
     #
