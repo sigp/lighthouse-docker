@@ -1,7 +1,8 @@
 sleep 3s
 
-/root/lighthouse/target/release/beacon_node \
+lighthouse \
 	--debug-level warn \
+	beacon \
 	testnet \
 	--force \
 	bootstrap \

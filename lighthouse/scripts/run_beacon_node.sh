@@ -10,13 +10,14 @@ else
 	DISCOVERY_ADDR_FLAG="--discovery-address ${DISCOVERY_ADDR}"
 fi
 
-/root/lighthouse/target/release/beacon_node \
+lighthouse \
 	--debug-level warn \
+	beacon \
 	$BOOT_NODES_FLAG \
 	$DISCOVERY_ADDR_FLAG \
 	testnet \
-	--client-config /root/.lighthouse/beacon-node.toml \
-	--eth2-config /root/.lighthouse/eth2-spec.toml \
+	--client-config /root/config/beacon-node.toml \
+	--eth2-config /root/config/eth2-spec.toml \
 	--force \
 	recent \
 	$NUM_INITIAL_VALIDATORS \

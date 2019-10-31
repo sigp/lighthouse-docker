@@ -1,6 +1,8 @@
-/root/lighthouse/target/release/validator_client \
-	--server $BEACON_NODE:5051 \
+lighthouse \
 	--debug-level warn \
+	validator\
+	--server $BEACON_NODE \
+	--server-grpc-port 5051 \
 	testnet \
 	-b \
 	insecure \

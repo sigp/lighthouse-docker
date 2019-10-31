@@ -3,6 +3,8 @@ db_type = "disk"
 db_name = "chain_db"
 log_file = ""
 spec_constants = "minimal"
+dummy_eth1_backend = true
+sync_eth1_chain = false
 
 [network]
 network_dir = "/root/network"
@@ -25,3 +27,18 @@ port = 5051
 enabled = true
 listen_address = "0.0.0.0"
 port = 5052
+
+[websocket_server]
+enabled = true
+listen_address = "127.0.0.1"
+port = 5053
+
+[eth1]
+endpoint = "http://localhost:8545"
+deposit_contract_address = "0x0000000000000000000000000000000000000000"
+deposit_contract_deploy_block = 0
+lowest_cached_block_number = 0
+follow_distance = 0
+block_cache_truncation = 4096
+auto_update_interval_millis = 500
+blocks_per_log_query = 1000
