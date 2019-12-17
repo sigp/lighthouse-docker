@@ -1,3 +1,7 @@
+# NOT MAINTAINED
+
+This repository is no longer maintained.
+
 # Lighthouse Testing Environment
 
 A `docker-compose` environment providing a network of beacon node/validator
