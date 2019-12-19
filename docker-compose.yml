@@ -1,121 +1,31 @@
-# Lighthouse Docker-Compose
-#
-# This docker-compose environment provides a testing environment for beacon
-# node and validator client binary instance.
-
-version: "3.7"
-
-# The "x-" prefixed objects are extension fields
-#
-# See: https://docs.docker.com/compose/compose-file/#variable-substitution
-
-# Base object for a validator client container.
-x-validator_client:
-    &validator_client
-    image: lighthouse:docker-testnet
-    volumes:
-        - ./lighthouse/repo:/root/lighthouse
-        - ./lighthouse/cargo-cache:/root/.cargo
-    networks:
-        - beacon_nodes
-    command: sh run_validator_client.sh
-
-# Base object for a beacon node container.
-x-beacon_node:
-    &beacon_node
-    image: lighthouse:docker-testnet
-    volumes:
-        - ./lighthouse/repo:/root/lighthouse
-        - ./lighthouse/cargo-cache:/root/.cargo
-        - ./lighthouse/boot-node:/root/boot-node
-    networks:
-        - beacon_nodes
-    depends_on:
-        - boot_node
-    command: sh run_bootstrapped_node.sh
-
+version: "3.0"
 
 services:
-    # The boot node has a different setup to the other beacon nodes so that
-    # it's discovery address can be shared with the other nodes.
-    boot_node:
-        image: lighthouse:docker-testnet
+    beacon_node:
+        image: sigp/lighthouse:dev
         volumes:
-            - ./lighthouse/repo:/root/lighthouse
-            - ./lighthouse/cargo-cache:/root/.cargo
-            - ./lighthouse/boot-node:/root/network
-        networks:
-            beacon_nodes:
-                ipv4_address: 172.42.0.250
+            - ./.lighthouse:/root/.lighthouse
+            - ./scripts:/root/scripts
         ports:
-            - 19000:9000
-            - 15051:5051
-            - 15052:5052
-        command: sh run_beacon_node.sh
-        environment:
-            DISCOVERY_ADDR: "172.42.0.250"
-            NUM_INITIAL_VALIDATORS: 16
-    beacon_node_1:
-        << : *beacon_node
-    beacon_node_2:
-        << : *beacon_node
-    beacon_node_3:
-        << : *beacon_node
-    beacon_node_4:
-        << : *beacon_node
-    validator_client_1:
-        << : *validator_client
-        environment:
-            BEACON_NODE: "beacon_node_1"
-            FIRST_VALIDATOR: 0
-            NUM_VALIDATORS: 4
-    validator_client_2:
-        << : *validator_client
-        environment:
-            BEACON_NODE: "beacon_node_2"
-            FIRST_VALIDATOR: 4
-            NUM_VALIDATORS: 4
-    validator_client_3:
-        << : *validator_client
-        environment:
-            BEACON_NODE: "beacon_node_3"
-            FIRST_VALIDATOR: 8
-            NUM_VALIDATORS: 4
-    validator_client_4:
-        << : *validator_client
-        environment:
-            BEACON_NODE: "beacon_node_4"
-            FIRST_VALIDATOR: 12
-            NUM_VALIDATORS: 4
-    #
-    # Metrics services -- provides a web GUI to monitor the testnet.
-    #
-    prometheus:
-        build:
-            context: prometheus
+            - 5052:5052
+            - 5053:5053
+        env_file: .env
+        command: sh /root/scripts/start-beacon-node.sh
+    validator_client:
+        image: sigp/lighthouse:dev
         volumes:
-            - prometheus-data:/prometheus
-        ports:
-            - 9090:9090
-        networks:
-            - beacon_nodes
-    grafana:
-        build:
-            context: grafana
+            - ./.lighthouse:/root/.lighthouse
+            - ./scripts:/root/scripts
+        depends_on:
+            - account_manager
+            - beacon_node
+        env_file: .env
+        command: sh /root/scripts/start-validator-client.sh
+    account_manager:
+        image: sigp/lighthouse:dev
         volumes:
-            - grafana-data:/var/lib/grafana
-        ports:
-            - 3000:3000
-        networks:
-            - beacon_nodes
-
-volumes:
-    grafana-data:
-    prometheus-data:
-
-networks:
-    beacon_nodes:
-        ipam:
-            driver: default
-            config:
-                - subnet: 172.42.0.0/24
+            - ./.lighthouse:/root/.lighthouse
+            - ./scripts:/root/scripts
+            - ./secrets:/root/secrets
+        env_file: .env
+        command: sh /root/scripts/create-validators.sh
