@@ -6,6 +6,7 @@ lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	beacon_node \
 	--eth1-endpoint $VOTING_ETH1_NODE \
+	--network-dir /root/network \
 	--http \
 	--http-address 0.0.0.0 \
 	--ws \

@@ -27,5 +27,6 @@ services:
             - ./.lighthouse:/root/.lighthouse
             - ./scripts:/root/scripts
             - ./secrets:/root/secrets
+            - ./network:/root/network
         env_file: .env
         command: sh /root/scripts/create-validators.sh
