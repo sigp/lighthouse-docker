@@ -13,8 +13,7 @@ if [ ! -d ~/.lighthouse/validators ]; then
 			new \
 			--send-deposits \
 			--eth1-endpoint $DEPOSITS_ETH1_NODE \
-			--testnet-dir /home/ec2-user/.lighthouse/testnet \
-			--password /root/secrets/eth1.pass \
+			--password $PASSWORD_FILE \
 			--deposit-value $DEPOSIT_VALUE \
 			random \
 			$VALIDATOR_COUNT
