@@ -5,7 +5,7 @@
 # nothing.
 
 if [ ! -d ~/.lighthouse/validators ]; then
-	if [ "$SEND_DEPOSITS" == "true" ]; then
+	if [ "$SEND_DEPOSITS" != "" ]; then
 		lighthouse \
 			--debug-level $DEBUG_LEVEL \
 			account \
