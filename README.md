@@ -2,7 +2,27 @@
 
 Provides a `docker-compose` environment for running Lighthouse.
 
-More docs to come soon.
+## Configuration
+
+The docker-compose file requires that an `.env` file be present in this
+directory. The `default.env` file provides a template and can be copied `.env`:
+
+```bash
+$ cp default.env .env
+```
+
+Failure to create an `.env` file will result in the following error:
+
+```
+ERROR: Couldn't find env file: /home/karlm/lighthouse-docker/.env
+```
+
+The following features are available:
+
+- A beacon node exposing a HTTP API on port `5052`.
+- A validator client (optional) that connects to the beacon node.
+- Key generation (optional) along with the ability to submit deposits to an
+	eth1 node (optional).
 
 ## Usage
 
