@@ -7,8 +7,10 @@ services:
             - ./.lighthouse:/root/.lighthouse
             - ./scripts:/root/scripts
         ports:
-            - 5052:5052
-            - 5053:5053
+            - 5052:5052/tcp
+            - 5053:5053/tcp
+            - 9000:9000/tcp
+            - 9000:9000/udp
         env_file: .env
         command: sh /root/scripts/start-beacon-node.sh
     validator_client:
