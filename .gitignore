@@ -1,0 +1,4 @@
+network/
+secrets/
+.lighthouse/
+.env
