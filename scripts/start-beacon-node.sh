@@ -2,6 +2,10 @@
 #
 # Starts a beacon node.
 
+if [ "$START_VALIDATOR" != "" ]; then
+	ETH1_FLAG=--eth1
+fi
+
 lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	beacon_node \
@@ -11,4 +15,4 @@ lighthouse \
 	--http-address 0.0.0.0 \
 	--ws \
 	--ws-address 0.0.0.0 \
-	--eth1
+	$ETH1_FLAG
