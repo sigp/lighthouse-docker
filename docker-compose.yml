@@ -32,3 +32,13 @@ services:
             - ./network:/root/network
         env_file: .env
         command: sh /root/scripts/create-validators.sh
+    geth:
+        build:
+            context: geth
+        volumes:
+            - ./scripts:/root/scripts
+        env_file: .env
+        ports:
+            - 30303:30303/tcp
+            - 30303:30303/udp
+
