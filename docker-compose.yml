@@ -36,9 +36,12 @@ services:
         build:
             context: geth
         volumes:
+            - geth:/root/.ethereum
             - ./scripts:/root/scripts
         env_file: .env
         ports:
             - 30303:30303/tcp
             - 30303:30303/udp
 
+volumes:
+    geth:
