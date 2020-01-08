@@ -18,7 +18,7 @@ the validator keys, beacon node database and other Lighthouse files.
 
 ## Configuration
 
-The docker-compose file requires that an `.env` file be present in this
+The docker-compose file requires that a `.env` file be present in this
 directory. The `default.env` file provides a template and can be copied `.env`:
 
 ```bash
