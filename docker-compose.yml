@@ -6,6 +6,7 @@ services:
         volumes:
             - ./.lighthouse:/root/.lighthouse
             - ./scripts:/root/scripts
+            - ./network:/root/network
         ports:
             - 5052:5052/tcp
             - 5053:5053/tcp
@@ -29,7 +30,6 @@ services:
             - ./.lighthouse:/root/.lighthouse
             - ./scripts:/root/scripts
             - ./secrets:/root/secrets
-            - ./network:/root/network
         env_file: .env
         command: sh /root/scripts/create-validators.sh
     geth:
