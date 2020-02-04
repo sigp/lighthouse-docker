@@ -11,7 +11,7 @@ lighthouse \
 	beacon_node \
 	--eth1-endpoint $VOTING_ETH1_NODE \
 	--network-dir /root/network \
-	--testnet-dir /root/.lighthouse/testnet
+	--testnet-dir /root/.lighthouse/testnet \
 	--http \
 	--http-address 0.0.0.0 \
 	--ws \
