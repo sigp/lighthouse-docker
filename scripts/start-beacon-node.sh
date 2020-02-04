@@ -3,7 +3,7 @@
 # Starts a beacon node.
 
 if [ "$START_VALIDATOR" != "" ]; then
-	ETH1_FLAG=--eth1
+	ETH1_FLAG=--dummy-eth1
 fi
 
 lighthouse \
