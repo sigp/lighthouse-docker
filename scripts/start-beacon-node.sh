@@ -6,7 +6,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 	ETH1_FLAG=--eth1
 fi
 
-lighthouse \
+exec lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	beacon_node \
 	--eth1-endpoint $VOTING_ETH1_NODE \

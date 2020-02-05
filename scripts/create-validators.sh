@@ -7,7 +7,7 @@
 if [ "$START_VALIDATOR" != "" ]; then
 	if [ ! -d ~/.lighthouse/validators ]; then
 		if [ "$SEND_DEPOSITS" != "" ]; then
-			lighthouse \
+			exec lighthouse \
 				--debug-level $DEBUG_LEVEL \
 				account \
 				validator \
@@ -19,7 +19,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 				random \
 				$VALIDATOR_COUNT
 		else
-			lighthouse \
+			exec lighthouse \
 				--debug-level $DEBUG_LEVEL \
 				account \
 				validator \
