@@ -11,7 +11,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 		sleep 1
 	done
 
-	lighthouse \
+	exec lighthouse \
 		--debug-level $DEBUG_LEVEL \
 		validator \
 		--server http://beacon_node:5052
