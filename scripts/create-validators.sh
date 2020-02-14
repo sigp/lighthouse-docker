@@ -10,9 +10,9 @@ if [ "$START_VALIDATOR" != "" ]; then
 			lighthouse \
 				--debug-level $DEBUG_LEVEL \
 				account \
-				--testnet-dir /root/.lighthouse/testnet \
 				validator \
 				new \
+				--testnet-dir /root/.lighthouse/testnet \
 				--send-deposits \
 				--eth1-endpoint $DEPOSITS_ETH1_NODE \
 				--password $PASSWORD_FILE \
@@ -25,6 +25,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 				account \
 				validator \
 				new \
+				--testnet-dir /root/.lighthouse/testnet \
 				--deposit-value $DEPOSIT_VALUE \
 				random \
 				$VALIDATOR_COUNT
