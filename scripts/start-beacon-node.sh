@@ -6,7 +6,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 	ETH1_FLAG=--eth1
 fi
 
-lighthouse \
+exec lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	beacon_node \
 	--testnet-dir /root/.lighthouse/testnet \
