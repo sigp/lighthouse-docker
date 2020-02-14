@@ -10,6 +10,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 			lighthouse \
 				--debug-level $DEBUG_LEVEL \
 				account \
+				--testnet-dir /root/.lighthouse/testnet \
 				validator \
 				new \
 				--send-deposits \

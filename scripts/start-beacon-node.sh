@@ -9,6 +9,7 @@ fi
 lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	beacon_node \
+	--testnet-dir /root/.lighthouse/testnet \
 	--eth1-endpoint $VOTING_ETH1_NODE \
 	--network-dir /root/network \
 	--http \
