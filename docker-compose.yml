@@ -2,7 +2,7 @@ version: "3.0"
 
 services:
     beacon_node:
-        image: sigp/lighthouse:ethdenver
+        image: sigp/lighthouse:testnet5
         volumes:
             - ./.lighthouse:/root/.lighthouse
             - ./scripts:/root/scripts
@@ -15,7 +15,7 @@ services:
         env_file: .env
         command: sh /root/scripts/start-beacon-node.sh
     validator_client:
-        image: sigp/lighthouse:ethdenver
+        image: sigp/lighthouse:testnet5
         volumes:
             - ./.lighthouse:/root/.lighthouse
             - ./scripts:/root/scripts
@@ -25,7 +25,7 @@ services:
         env_file: .env
         command: sh /root/scripts/start-validator-client.sh
     account_manager:
-        image: sigp/lighthouse:ethdenver
+        image: sigp/lighthouse:testnet5
         volumes:
             - ./.lighthouse:/root/.lighthouse
             - ./scripts:/root/scripts
