@@ -5,7 +5,7 @@
 # validator client.
 
 if [ "$START_VALIDATOR" != "" ]; then
-	while [ $(ls -1 ~/.lighthouse/validators | wc -l) != $VALIDATOR_COUNT ]
+	while [ $(ls -1 -d ~/.lighthouse/validators | wc -l) != $VALIDATOR_COUNT ]
 	do
 		echo "Waiting for $VALIDATOR_COUNT validators."
 		sleep 1
