@@ -2,7 +2,7 @@ version: "3.0"
 
 services:
     beacon_node:
-        image: sigp/lighthouse:v0.1.2
+        image: sigp/lighthouse:latest
         volumes:
             - ./.lighthouse:/root/.lighthouse
             - ./scripts:/root/scripts
@@ -15,23 +15,14 @@ services:
         env_file: .env
         command: sh /root/scripts/start-beacon-node.sh
     validator_client:
-        image: sigp/lighthouse:v0.1.2
+        image: sigp/lighthouse:latest
         volumes:
             - ./.lighthouse:/root/.lighthouse
             - ./scripts:/root/scripts
         depends_on:
-            - account_manager
             - beacon_node
         env_file: .env
         command: sh /root/scripts/start-validator-client.sh
-    account_manager:
-        image: sigp/lighthouse:v0.1.2
-        volumes:
-            - ./.lighthouse:/root/.lighthouse
-            - ./scripts:/root/scripts
-            - ./secrets:/root/secrets
-        env_file: .env
-        command: sh /root/scripts/create-validators.sh
     geth:
         build:
             context: geth
