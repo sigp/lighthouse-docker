@@ -6,8 +6,7 @@ The following features are available:
 
 - A beacon node exposing a HTTP API on port `5052`.
 - A validator client (optional) that connects to the beacon node.
-- Key generation (optional) along with the ability to submit deposits to an
-	eth1 node (optional).
+- Wallet and validator key generation (optional).
 
 ## Usage
 
