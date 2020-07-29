@@ -4,7 +4,7 @@ services:
     beacon_node:
         image: sigp/lighthouse:latest
         volumes:
-            - ./.lighthouse:/root/.lighthouse
+            - ./lighthouse-data:/root/.lighthouse
             - ./scripts:/root/scripts
             - ./network:/root/network
         ports:
@@ -17,7 +17,7 @@ services:
     validator_client:
         image: sigp/lighthouse:latest
         volumes:
-            - ./.lighthouse:/root/.lighthouse
+            - ./lighthouse-data:/root/.lighthouse
             - ./scripts:/root/scripts
         depends_on:
             - beacon_node

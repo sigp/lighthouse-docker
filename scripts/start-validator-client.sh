@@ -3,6 +3,10 @@
 WALLET_NAME=validators
 WALLET_PASSFILE=~/.lighthouse/secrets/$WALLET_NAME.pass
 
+if [ "$TESTNET" != "" ]; then
+	TESTNET_PARAM="--testnet $TESTNET"
+fi
+
 if [ "$START_VALIDATOR" != "" ]; then
 	if [ ! -d ~/.lighthouse/secrets ]; then
 		cd ~/.lighthouse; mkdir secrets
@@ -11,6 +15,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 	if [ ! -d ~/.lighthouse/wallets ]; then
 		lighthouse \
 			--debug-level $DEBUG_LEVEL \
+			$TESTNET_PARAM \
 			account \
 			wallet \
 			create \
@@ -22,6 +27,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 
 	lighthouse \
 		--debug-level $DEBUG_LEVEL \
+		$TESTNET_PARAM \
 		account \
 		validator \
 		create \
@@ -31,6 +37,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 
 	exec lighthouse \
 		--debug-level $DEBUG_LEVEL \
+		$TESTNET_PARAM \
 		validator \
 		--auto-register \
 		--server http://beacon_node:5052
