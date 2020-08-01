@@ -10,6 +10,10 @@ if [ "$TESTNET" != "" ]; then
 	TESTNET_PARAM="--testnet $TESTNET"
 fi
 
+if [ "$GRAFFITI" != "" ]; then
+	GRAFFITI_PARAM="--graffiti $GRAFFITI"
+fi
+
 exec lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	$TESTNET_PARAM \
@@ -20,4 +24,5 @@ exec lighthouse \
 	--http-address 0.0.0.0 \
 	--ws \
 	--ws-address 0.0.0.0 \
+	$GRAFFITI_PARAM \
 	$ETH1_FLAG
