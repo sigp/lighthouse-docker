@@ -29,10 +29,11 @@ services:
         volumes:
             - geth:/root/.ethereum
             - ./scripts:/root/scripts
-        env_file: .env
         ports:
             - 30303:30303/tcp
             - 30303:30303/udp
+        env_file: .env
+        command: sh /root/scripts/start-geth.sh
 
 volumes:
     geth:
