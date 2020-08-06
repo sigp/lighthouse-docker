@@ -3,5 +3,5 @@
 # Starts a local fast-synced geth node.
 
 if [ "$START_GETH" != "" ]; then
-	exec geth --goerli --rpc --rpcaddr "0.0.0.0" --rpcvhosts=* --nousb
+	exec geth --goerli --http --http.addr "0.0.0.0" --http.vhosts=* --nousb
 fi
