@@ -12,8 +12,7 @@ The following features are available:
 
 `$ docker-compose up`
 
-A `.lighthouse` directory will be created in the repository root which contains
-the validator keys, beacon node database and other Lighthouse files.
+A `.lighthouse` directory will be created in your home directory. It will contain the validator keys, beacon node database and other Lighthouse files.
 
 ## Configuration
 
