@@ -6,5 +6,6 @@ if [ "$START_GETH" != "" ]; then
 	exec geth \
 		--goerli \
 		--http --http.addr "0.0.0.0" --http.vhosts=* --http.api "eth" \
+		--ipcdisable \
 		--nousb
 fi
