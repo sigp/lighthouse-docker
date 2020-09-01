@@ -1,4 +1,4 @@
 network/
 secrets/
-lighthouse-data/
+.lighthouse/
 .env
