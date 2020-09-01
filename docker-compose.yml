@@ -4,35 +4,36 @@ services:
     beacon_node:
         image: sigp/lighthouse:latest
         volumes:
-            - ./lighthouse-data:/home/lighthouse/.lighthouse
-            - ./scripts:/home/lighthouse/scripts
+            - ./lighthouse-data:/root/.lighthouse
+            - ./scripts:/root/scripts
+            - ./network:/root/network
         ports:
             - 5052:5052/tcp
             - 5053:5053/tcp
             - 9000:9000/tcp
             - 9000:9000/udp
         env_file: .env
-        command: sh /home/lighthouse/scripts/start-beacon-node.sh
+        command: sh /root/scripts/start-beacon-node.sh
     validator_client:
         image: sigp/lighthouse:latest
         volumes:
-            - ./lighthouse-data:/home/lighthouse/.lighthouse
-            - ./scripts:/home/lighthouse/scripts
+            - ./lighthouse-data:/root/.lighthouse
+            - ./scripts:/root/scripts
         depends_on:
             - beacon_node
         env_file: .env
-        command: sh /home/lighthouse/scripts/start-validator-client.sh
+        command: sh /root/scripts/start-validator-client.sh
     geth:
         build:
             context: geth
         volumes:
             - geth:/root/.ethereum
-            - ./scripts:/home/lighthouse/scripts
+            - ./scripts:/root/scripts
         ports:
             - 30303:30303/tcp
             - 30303:30303/udp
         env_file: .env
-        command: sh /home/lighthouse/scripts/start-geth.sh
+        command: sh /root/scripts/start-geth.sh
 
 volumes:
     geth:
