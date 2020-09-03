@@ -32,7 +32,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 		validator \
 		create \
 		--wallet-name $WALLET_NAME \
-		--wallet-passphrase $WALLET_PASSFILE \
+		--wallet-password $WALLET_PASSFILE \
 		--at-most $VALIDATOR_COUNT &&
 
 	exec lighthouse \
