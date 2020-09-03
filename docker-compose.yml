@@ -27,7 +27,7 @@ services:
         build:
             context: geth
         volumes:
-            - geth:/root/.ethereum
+            - ./geth-data:/root/.ethereum
             - ./scripts:/root/scripts
         ports:
             - 30303:30303/tcp
