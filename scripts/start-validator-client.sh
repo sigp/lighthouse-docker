@@ -20,7 +20,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 			wallet \
 			create \
 			--name $WALLET_NAME \
-			--passphrase-file $WALLET_PASSFILE
+			--password-file $WALLET_PASSFILE
 	else
 		echo "Wallet directory already exists. Will not create wallet."
 	fi
@@ -32,7 +32,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 		validator \
 		create \
 		--wallet-name $WALLET_NAME \
-		--wallet-passphrase $WALLET_PASSFILE \
+		--wallet-password $WALLET_PASSFILE \
 		--at-most $VALIDATOR_COUNT &&
 
 	exec lighthouse \
