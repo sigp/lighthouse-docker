@@ -24,8 +24,8 @@ services:
         env_file: .env
         command: sh /root/scripts/start-validator-client.sh
     geth:
-        build:
-            context: geth
+        image: ethereum/client-go
+        entrypoint: /bin/sh
         volumes:
             - geth:/root/.ethereum
             - ./scripts:/root/scripts
@@ -33,7 +33,7 @@ services:
             - 30303:30303/tcp
             - 30303:30303/udp
         env_file: .env
-        command: sh /root/scripts/start-geth.sh
+        command: /root/scripts/start-geth.sh
 
 volumes:
     geth:
