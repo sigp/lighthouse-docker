@@ -1,4 +1,5 @@
 network/
 secrets/
+geth-data/
 lighthouse-data/
 .env
