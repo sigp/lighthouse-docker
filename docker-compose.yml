@@ -35,5 +35,3 @@ services:
         env_file: .env
         command: /root/scripts/start-geth.sh
 
-volumes:
-    geth:
