@@ -27,7 +27,7 @@ services:
         image: ethereum/client-go
         entrypoint: /bin/sh
         volumes:
-            - geth:/root/.ethereum
+            - ./geth-data:/root/.ethereum
             - ./scripts:/root/scripts
         ports:
             - 30303:30303/tcp
@@ -35,5 +35,3 @@ services:
         env_file: .env
         command: /root/scripts/start-geth.sh
 
-volumes:
-    geth:
