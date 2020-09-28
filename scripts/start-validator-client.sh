@@ -1,5 +1,7 @@
 #! /bin/bash
 
+DEFAULT_TESTNET=medalla
+
 # Set testnet name
 if [ "$TESTNET" = "" ]; then
 	TESTNET=$DEFAULT_TESTNET
