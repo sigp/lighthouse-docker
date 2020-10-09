@@ -25,7 +25,6 @@ if [ "$START_VALIDATOR" != "" ]; then
 			--testnet $TESTNET \
 			account \
 			wallet \
-			--base-dir $DATADIR/wallets \
 			create \
 			--name $WALLET_NAME \
 			--password-file $WALLET_PASSFILE
@@ -38,20 +37,14 @@ if [ "$START_VALIDATOR" != "" ]; then
 		--testnet $TESTNET \
 		account \
 		validator \
-		--base-dir $DATADIR/wallets \
 		create \
 		--wallet-name $WALLET_NAME \
 		--wallet-password $WALLET_PASSFILE \
-		--validator-dir $DATADIR/validators \
-		--secrets-dir $DATADIR/secrets \
 		--at-most $VALIDATOR_COUNT &&
 
 	exec lighthouse \
 		--debug-level $DEBUG_LEVEL \
 		--testnet $TESTNET \
-		--datadir $DATADIR/validators \
 		validator \
-		--secrets-dir $DATADIR/secrets \
-		--auto-register \
-		--server http://beacon_node:5052
+		--beacon-node http://beacon_node:5052
 fi

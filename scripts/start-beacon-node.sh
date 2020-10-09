@@ -14,8 +14,6 @@ if [ "$TESTNET" = "" ]; then
 fi
 
 
-DATADIR=/root/.lighthouse/$TESTNET
-
 if [ "$GRAFFITI" != "" ]; then
 	GRAFFITI_PARAM="--graffiti $GRAFFITI"
 fi
@@ -23,7 +21,6 @@ fi
 exec lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	--testnet $TESTNET \
-	--datadir $DATADIR \
 	beacon_node \
 	--eth1-endpoint $VOTING_ETH1_NODE \
 	--http \
