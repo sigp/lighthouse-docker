@@ -15,32 +15,41 @@ WALLET_PASSFILE=$DATADIR/secrets/$WALLET_NAME.pass
 
 
 if [ "$START_VALIDATOR" != "" ]; then
-	if [ ! -d $DATADIR/secrets ]; then
-		cd $DATADIR; mkdir secrets
-	fi
+	if [ "$IMPORT_LAUNCHPAD_KEYSTORES" != "" ]; then
+		echo $LAUNCHPAD_KEYSTORE_PASSWD | lighthouse \
+			--testnet $TESTNET \
+			account validator import \
+			--directory /root/validator_keys \
+			--reuse-password \
+			--stdin-inputs
+	else
+		if [ ! -d $DATADIR/secrets ]; then
+			cd $DATADIR; mkdir secrets
+		fi
 
-	if [ ! -d $DATADIR/wallets ]; then
+		if [ ! -d $DATADIR/wallets ]; then
+			lighthouse \
+				--debug-level $DEBUG_LEVEL \
+				--testnet $TESTNET \
+				account \
+				wallet \
+				create \
+				--name $WALLET_NAME \
+				--password-file $WALLET_PASSFILE
+		else
+			echo "Wallet directory already exists. Will not create wallet."
+		fi
+
 		lighthouse \
 			--debug-level $DEBUG_LEVEL \
 			--testnet $TESTNET \
 			account \
-			wallet \
+			validator \
 			create \
-			--name $WALLET_NAME \
-			--password-file $WALLET_PASSFILE
-	else
-		echo "Wallet directory already exists. Will not create wallet."
+			--wallet-name $WALLET_NAME \
+			--wallet-password $WALLET_PASSFILE \
+			--at-most $VALIDATOR_COUNT
 	fi
-
-	lighthouse \
-		--debug-level $DEBUG_LEVEL \
-		--testnet $TESTNET \
-		account \
-		validator \
-		create \
-		--wallet-name $WALLET_NAME \
-		--wallet-password $WALLET_PASSFILE \
-		--at-most $VALIDATOR_COUNT &&
 
 	exec lighthouse \
 		--debug-level $DEBUG_LEVEL \
