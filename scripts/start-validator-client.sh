@@ -12,7 +12,8 @@ if [ "$IMPORT_LAUNCHPAD" != "" ]; then
 		--testnet $TESTNET \
 		account validator import \
 		--directory /root/validator_keys \
-		--reuse-password
+		--reuse-password \
+		--stdin-inputs
 fi
 
 if [ "$START_VALIDATOR" != "" ]; then
