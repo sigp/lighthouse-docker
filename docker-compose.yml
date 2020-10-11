@@ -6,7 +6,6 @@ services:
         volumes:
             - ./lighthouse-data:/root/.lighthouse
             - ./scripts:/root/scripts
-            - ./network:/root/network
         ports:
             - 5052:5052/tcp
             - 5053:5053/tcp

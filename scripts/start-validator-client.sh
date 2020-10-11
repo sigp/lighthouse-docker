@@ -1,14 +1,16 @@
 #! /bin/bash
 
-if [ "$TESTNET" != "" ]; then
-	TESTNET_PARAM="--testnet $TESTNET"
+DEFAULT_TESTNET=medalla
+
+# Set testnet name
+if [ "$TESTNET" = "" ]; then
+	TESTNET=$DEFAULT_TESTNET
 fi
 
 if [ "$START_VALIDATOR" != "" ]; then
 	exec lighthouse \
 		--debug-level $DEBUG_LEVEL \
-		$TESTNET_PARAM \
+		--testnet $TESTNET \
 		validator \
-		--auto-register \
-		--server http://beacon_node:5052
+		--beacon-node http://beacon_node:5052
 fi

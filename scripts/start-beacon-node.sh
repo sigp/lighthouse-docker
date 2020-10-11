@@ -2,13 +2,17 @@
 #
 # Starts a beacon node.
 
+DEFAULT_TESTNET=medalla
+
 if [ "$START_VALIDATOR" != "" ]; then
 	ETH1_FLAG=--eth1
 fi
 
-if [ "$TESTNET" != "" ]; then
-	TESTNET_PARAM="--testnet $TESTNET"
+
+if [ "$TESTNET" = "" ]; then
+	TESTNET=$DEFAULT_TESTNET
 fi
+
 
 if [ "$GRAFFITI" != "" ]; then
 	GRAFFITI_PARAM="--graffiti $GRAFFITI"
@@ -16,10 +20,9 @@ fi
 
 exec lighthouse \
 	--debug-level $DEBUG_LEVEL \
-	$TESTNET_PARAM \
+	--testnet $TESTNET \
 	beacon_node \
 	--eth1-endpoint $VOTING_ETH1_NODE \
-	--network-dir /root/network \
 	--http \
 	--http-address 0.0.0.0 \
 	--ws \
