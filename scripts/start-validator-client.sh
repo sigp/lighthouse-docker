@@ -7,7 +7,7 @@ if [ "$TESTNET" = "" ]; then
 	TESTNET=$DEFAULT_TESTNET
 fi
 
-if [ "$IMPORT_LAUNCHPAD" != ""]; then
+if [ "$IMPORT_LAUNCHPAD" != "" ]; then
 	echo $KEYSTORE_PASSWD | lighthouse \
 		--testnet $TESTNET \
 		account validator import \
