@@ -3,3 +3,4 @@ secrets/
 geth-data/
 lighthouse-data/
 .env
+validator_keys/
