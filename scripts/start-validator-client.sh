@@ -13,6 +13,7 @@ if [ "$IMPORT_LAUNCHPAD" != ""]; then
 		account validator import \
 		--directory /root/validator_keys \
 		--reuse-password
+fi
 
 if [ "$START_VALIDATOR" != "" ]; then
 	exec lighthouse \
