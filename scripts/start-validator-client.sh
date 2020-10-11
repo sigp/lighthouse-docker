@@ -7,6 +7,13 @@ if [ "$TESTNET" = "" ]; then
 	TESTNET=$DEFAULT_TESTNET
 fi
 
+if [ "$IMPORT_LAUNCHPAD" != ""]; then
+	echo $KEYSTORE_PASSWD | lighthouse \
+		--testnet $TESTNET \
+		account validator import \
+		--directory /root/validator_keys \
+		--reuse-password
+
 if [ "$START_VALIDATOR" != "" ]; then
 	exec lighthouse \
 		--debug-level $DEBUG_LEVEL \

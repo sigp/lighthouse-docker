@@ -18,6 +18,7 @@ services:
         volumes:
             - ./lighthouse-data:/root/.lighthouse
             - ./scripts:/root/scripts
+            - ./validator_keys:/root/validator_keys
         depends_on:
             - beacon_node
         env_file: .env
