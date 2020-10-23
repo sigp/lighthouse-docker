@@ -9,6 +9,7 @@ services:
         ports:
             - 5052:5052/tcp
             - 5053:5053/tcp
+            - 5054:5054/tcp     # metrics endpoint
             - 9000:9000/tcp
             - 9000:9000/udp
         env_file: .env
