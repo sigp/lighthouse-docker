@@ -4,7 +4,7 @@ services:
     beacon_node:
         image: sigp/lighthouse:latest
         volumes:
-            - ./lighthouse-data:/root/.lighthouse
+            - ${LIGHTHOUSE_DATA}:/root/.lighthouse
             - ./scripts:/root/scripts
         ports:
             - 5052:5052/tcp
@@ -18,7 +18,7 @@ services:
     validator_client:
         image: sigp/lighthouse:latest
         volumes:
-            - ./lighthouse-data:/root/.lighthouse
+            - ${LIGHTHOUSE_DATA}:/root/.lighthouse
             - ./scripts:/root/scripts
             - ./validator_keys:/root/validator_keys
         depends_on:
@@ -30,7 +30,7 @@ services:
         image: ethereum/client-go
         entrypoint: /bin/sh
         volumes:
-            - ./geth-data:/root/.ethereum
+            - ${GETH_DATA}:/root/.ethereum
             - ./scripts:/root/scripts
         ports:
             - 30303:30303/tcp
