@@ -21,6 +21,11 @@ if [ "$GRAFFITI" != "" ]; then
 	GRAFFITI_PARAM="--graffiti $GRAFFITI"
 fi
 
+if [ "$START_SLASHER" != "" ]; then
+	SLASHER_FLAG="--slasher"
+fi
+
+
 exec lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	--testnet $TESTNET \
@@ -33,4 +38,5 @@ exec lighthouse \
 	--ws-address 0.0.0.0 \
 	--max-skip-slots 700 \
 	$GRAFFITI_PARAM \
-	$ETH1_FLAG
+	$ETH1_FLAG \
+	$SLASHER_FLAG
