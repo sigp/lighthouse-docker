@@ -2,6 +2,19 @@
 #
 # Starts a local fast-synced geth node.
 
+DEFAULT_NETWORK=mainnet
+
+# Set testnet name
+
+if [ "$NETWORK" = "" ]; then
+	NETWORK=$DEFAULT_NETWORK
+fi
+
+
 if [ "$START_GETH" != "" ]; then
-	exec geth --goerli --http --http.addr "0.0.0.0" --http.vhosts=* --http.api "eth,net" --ipcdisable --nousb
+	if [ "$NETWORK" != "$DEFAULT_NETWORK" ]; then
+		exec geth --goerli --http --http.addr "0.0.0.0" --http.vhosts=* --http.api "eth,net" --ipcdisable --nousb
+	else
+		exec geth --http --http.addr "0.0.0.0" --http.vhosts=* --http.api "eth,net" --ipcdisable --nousb
+	fi
 fi
