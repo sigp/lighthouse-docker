@@ -4,8 +4,6 @@
 
 DEFAULT_NETWORK=mainnet
 
-# Set testnet name
-
 if [ "$NETWORK" = "" ]; then
 	NETWORK=$DEFAULT_NETWORK
 fi
