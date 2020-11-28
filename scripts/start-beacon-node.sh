@@ -21,6 +21,10 @@ if [ "$GRAFFITI" != "" ]; then
 	GRAFFITI_PARAM="--graffiti $GRAFFITI"
 fi
 
+if [ "$SEARCH_BLOCKS" != ""]; then
+  SEARCH_BLOCKS_PARAM="--eth1-blocks-per-log-query $SEARCH_BLOCKS"
+fi
+
 exec lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	--testnet $TESTNET \
@@ -33,4 +37,5 @@ exec lighthouse \
 	--ws-address 0.0.0.0 \
 	--max-skip-slots 700 \
 	$GRAFFITI_PARAM \
-	$ETH1_FLAG
+	$ETH1_FLAG \
+	$SEARCH_BLOCKS_PARAM
