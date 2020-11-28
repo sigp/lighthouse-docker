@@ -1,14 +1,14 @@
 #! /bin/bash
 
-DEFAULT_TESTNET=medalla
+DEFAULT_NETWORK=mainnet
 
 # Set testnet name
-if [ "$TESTNET" = "" ]; then
-	TESTNET=$DEFAULT_TESTNET
+if [ "$NETWORK" = "" ]; then
+	NETWORK=$DEFAULT_NETWORK
 fi
 
 # Base dir
-DATADIR=/root/.lighthouse/$TESTNET
+DATADIR=/root/.lighthouse/$NETWORK
 
 WALLET_NAME=validators
 WALLET_PASSFILE=$DATADIR/secrets/$WALLET_NAME.pass
@@ -17,7 +17,7 @@ WALLET_PASSFILE=$DATADIR/secrets/$WALLET_NAME.pass
 if [ "$START_VALIDATOR" != "" ]; then
 	if [ "$IMPORT_LAUNCHPAD_KEYSTORES" != "" ]; then
 		echo $LAUNCHPAD_KEYSTORE_PASSWD | lighthouse \
-			--testnet $TESTNET \
+			--network $NETWORK \
 			account validator import \
 			--directory /root/validator_keys \
 			--reuse-password \
@@ -30,7 +30,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 		if [ ! -d $DATADIR/wallets ]; then
 			lighthouse \
 				--debug-level $DEBUG_LEVEL \
-				--testnet $TESTNET \
+				--network $NETWORK \
 				account \
 				wallet \
 				create \
@@ -42,7 +42,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 
 		lighthouse \
 			--debug-level $DEBUG_LEVEL \
-			--testnet $TESTNET \
+			--network $NETWORK \
 			account \
 			validator \
 			create \
@@ -53,7 +53,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 
 	exec lighthouse \
 		--debug-level $DEBUG_LEVEL \
-		--testnet $TESTNET \
+		--network $NETWORK \
 		validator \
 		--beacon-node http://beacon_node:5052
 fi
