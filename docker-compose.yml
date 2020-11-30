@@ -5,7 +5,7 @@ services:
         image: sigp/lighthouse:latest
         user: "${HOST_UID}"
         volumes:
-            - ${LIGHTHOUSE_DATA_DIR}:/home/lighthouse/.lighthouse
+            - ${LIGHTHOUSE_DATA}:/home/lighthouse/.lighthouse
             - ./scripts:/home/lighthouse/scripts
         ports:
             - 5052:5052/tcp
@@ -20,7 +20,7 @@ services:
         image: sigp/lighthouse:latest
         user: "${HOST_UID}"
         volumes:
-            - ${LIGHTHOUSE_DATA_DIR}:/home/lighthouse/.lighthouse
+            - ${LIGHTHOUSE_DATA}:/home/lighthouse/.lighthouse
             - ./scripts:/home/lighthouse/scripts
             - ./validator_keys:/home/lighthouse/validator_keys
         depends_on:
@@ -34,7 +34,7 @@ services:
         image: ethereum/client-go
         entrypoint: /bin/sh
         volumes:
-            - ${GETH_DATA_DIR}:/root/.ethereum
+            - ${GETH_DATA}:/root/.ethereum
             - ./scripts:/root/scripts
         ports:
             - 30303:30303/tcp
