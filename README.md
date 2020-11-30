@@ -10,7 +10,7 @@ The following features are available:
 
 ## Usage
 
-`$ docker-compose up`
+`$ ./start.sh`
 
 A `.lighthouse` directory will be created in the repository root which contains
 the validator keys, beacon node database and other Lighthouse files.
