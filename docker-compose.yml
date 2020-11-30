@@ -23,6 +23,8 @@ services:
             - ./validator_keys:/root/validator_keys
         depends_on:
             - beacon_node
+        ports:
+            - 5064:5064/tcp     # metrics endpoint
         env_file: .env
         command: sh /root/scripts/start-validator-client.sh
         restart: on-failure
