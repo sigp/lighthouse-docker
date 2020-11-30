@@ -12,7 +12,7 @@ if [ "$ENABLE_METRICS" != "" ]; then
 fi
 
 # Base dir
-DATADIR=/root/.lighthouse/$NETWORK
+DATADIR=/home/lighthouse/.lighthouse/$NETWORK
 
 WALLET_NAME=validators
 WALLET_PASSFILE=$DATADIR/secrets/$WALLET_NAME.pass
@@ -23,7 +23,7 @@ if [ "$START_VALIDATOR" != "" ]; then
 		echo $LAUNCHPAD_KEYSTORE_PASSWD | lighthouse \
 			--network $NETWORK \
 			account validator import \
-			--directory /root/validator_keys \
+			--directory /home/lighthouse/validator_keys \
 			--reuse-password \
 			--stdin-inputs
 	else
