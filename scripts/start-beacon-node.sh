@@ -20,6 +20,10 @@ if [ "$GRAFFITI" != "" ]; then
 	GRAFFITI_PARAM="--graffiti $GRAFFITI"
 fi
 
+if [ "$PRIVATE" != "" ]; then
+	PRIVATE_FLAG="--private"
+fi
+
 if [ "$START_SLASHER" != "" ]; then
 	SLASHER_FLAG="--slasher"
 fi
@@ -43,4 +47,5 @@ exec lighthouse \
 	$GRAFFITI_PARAM \
 	$ETH1_FLAG \
 	$SLASHER_FLAG \
-	$SEARCH_BLOCKS_PARAM
+	$SEARCH_BLOCKS_PARAM \
+	$PRIVATE_FLAG
