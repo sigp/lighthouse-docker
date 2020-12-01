@@ -24,7 +24,7 @@ if [ "$START_SLASHER" != "" ]; then
 	SLASHER_FLAG="--slasher"
 fi
 
-if [ "$SEARCH_BLOCKS" != ""]; then
+if [ "$SEARCH_BLOCKS" != "" ]; then
 	SEARCH_BLOCKS_PARAM="--eth1-blocks-per-log-query $SEARCH_BLOCKS"
 fi
 
