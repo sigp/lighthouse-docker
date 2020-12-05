@@ -5,7 +5,7 @@ services:
         image: sigp/lighthouse:latest
         volumes:
             - ./lighthouse-data:/root/.lighthouse
-            - ./scripts:/root/scripts
+            - ./scripts:/root/scripts:ro
         ports:
             - 5052:5052/tcp
             - 5053:5053/tcp
@@ -19,8 +19,8 @@ services:
         image: sigp/lighthouse:latest
         volumes:
             - ./lighthouse-data:/root/.lighthouse
-            - ./scripts:/root/scripts
-            - ./validator_keys:/root/validator_keys
+            - ./scripts:/root/scripts:ro
+            - ./validator_keys:/root/validator_keys:ro
         depends_on:
             - beacon_node
         ports:
@@ -33,7 +33,7 @@ services:
         entrypoint: /bin/sh
         volumes:
             - ./geth-data:/root/.ethereum
-            - ./scripts:/root/scripts
+            - ./scripts:/root/scripts:ro
         ports:
             - 30303:30303/tcp
             - 30303:30303/udp
