@@ -29,7 +29,7 @@ services:
         command: sh /root/scripts/start-validator-client.sh
         restart: on-failure
     geth:
-        image: ethereum/client-go
+        image: ethereum/client-go:v1.9.25
         entrypoint: /bin/sh
         volumes:
             - ./geth-data:/root/.ethereum
