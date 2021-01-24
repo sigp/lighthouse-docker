@@ -28,6 +28,17 @@ if [ "$SEARCH_BLOCKS" != ""]; then
 	SEARCH_BLOCKS_PARAM="--eth1-blocks-per-log-query $SEARCH_BLOCKS"
 fi
 
+if [ "$ENABLE_MONITORING_AUTO" != "" ]; then
+	ENABLE_MONITORING_AUTO_FLAG="--validator-monitor-auto"
+fi
+
+if [ "$ENABLE_MONITORING_MANUAL" != "" ]; then
+	ENABLE_MONITORING_MANUAL_PARAMS="--validator-monitor-pubkeys $ENABLE_MONITORING_MANUAL"
+fi
+
+if [ "$ENABLE_FULL_NETWORK_VIEW" != "" ]; then
+	ENABLE_FULL_NETWORK_VIEW_PARAMS="--subscribe-all-subnets --import-all-attestations"
+fi
 
 exec lighthouse \
 	--debug-level $DEBUG_LEVEL \
@@ -40,4 +51,7 @@ exec lighthouse \
 	$GRAFFITI_PARAM \
 	$ETH1_FLAG \
 	$SLASHER_FLAG \
-	$SEARCH_BLOCKS_PARAM
+	$SEARCH_BLOCKS_PARAM \
+	$ENABLE_MONITORING_AUTO_FLAG \
+	$ENABLE_MONITORING_MANUAL_PARAMS \
+	$ENABLE_FULL_NETWORK_VIEW_PARAMS
