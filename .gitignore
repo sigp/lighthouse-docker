@@ -4,3 +4,5 @@ geth-data/
 lighthouse-data/
 validator_keys/
 .env
+docker-compose.override.yaml
+docker-compose.override.yml
