@@ -60,5 +60,5 @@ if [ "$START_VALIDATOR" != "" ]; then
 		--network $NETWORK \
 		validator \
 		$METRICS_PARAMS \
-		--beacon-node http://beacon_node:5052
+		--beacon-nodes $VOTING_ETH2_NODES
 fi
