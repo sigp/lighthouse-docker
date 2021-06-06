@@ -17,6 +17,11 @@ DATADIR=/root/.lighthouse/$NETWORK
 WALLET_NAME=validators
 WALLET_PASSFILE=$DATADIR/secrets/$WALLET_NAME.pass
 
+if [ "$IMPORT_SLASH_PROTECTION" != "" ]; then
+	lighthouse \
+		--network $NETWORK \
+		account validator slashing-protection import \
+		$SLASH_PROTECTION_JSON_PATH 
 
 if [ "$START_VALIDATOR" != "" ]; then
 	if [ "$IMPORT_LAUNCHPAD_KEYSTORES" != "" ]; then
