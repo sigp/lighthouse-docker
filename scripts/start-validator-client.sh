@@ -21,7 +21,7 @@ if [ "$IMPORT_SLASH_PROTECTION" != "" ]; then
 	lighthouse \
 		--network $NETWORK \
 		account validator slashing-protection import \
-		$SLASH_PROTECTION_JSON_PATH
+		/root/slash-protection/$SLASH_PROTECTION_JSON_PATH
 fi
 
 if [ "$START_VALIDATOR" != "" ]; then
