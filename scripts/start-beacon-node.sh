@@ -44,6 +44,10 @@ if [ "$ENABLE_FULL_NETWORK_VIEW" != "" ]; then
 	ENABLE_FULL_NETWORK_VIEW_PARAMS="--subscribe-all-subnets --import-all-attestations"
 fi
 
+if [ "$MONITORING_ENDPOINT" != "" ]; then
+	MONITORING_ENDPOINT_PARAM="--monitoring-endpoint $MONITORING_ENDPOINT"
+fi
+
 exec lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	--network $NETWORK \
@@ -59,4 +63,5 @@ exec lighthouse \
 	$PRIVATE_FLAG \
 	$ENABLE_MONITORING_AUTO_FLAG \
 	$ENABLE_MONITORING_MANUAL_PARAMS \
-	$ENABLE_FULL_NETWORK_VIEW_PARAMS
+	$ENABLE_FULL_NETWORK_VIEW_PARAMS \
+	$MONITORING_ENDPOINT_PARAM
