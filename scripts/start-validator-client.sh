@@ -55,10 +55,15 @@ if [ "$START_VALIDATOR" != "" ]; then
 			--at-most $VALIDATOR_COUNT
 	fi
 
+	if [ "$MONITORING_SERVICE_ENDPOINT" != "" ]; then
+			MONITORING_SERVICE_PARAMS="--monitoring-endpoint $MONITORING_SERVICE_ENDPOINT"
+		fi
+
 	exec lighthouse \
 		--debug-level $DEBUG_LEVEL \
 		--network $NETWORK \
 		validator \
 		$METRICS_PARAMS \
+		$MONITORING_SERVICE_PARAMS \
 		--beacon-nodes $VOTING_ETH2_NODES
 fi
