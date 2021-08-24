@@ -11,6 +11,10 @@ if [ "$ENABLE_METRICS" != "" ]; then
   METRICS_PARAMS="--metrics --metrics-address 0.0.0.0 "
 fi
 
+if [ "$ENABLE_DOPPELGANGER_PROTECTION" != "" ]; then
+  DOPPELGANGER_PROTECTION="--enable-doppelganger-protection "
+fi
+
 # Base dir
 DATADIR=/root/.lighthouse/$NETWORK
 
@@ -60,5 +64,6 @@ if [ "$START_VALIDATOR" != "" ]; then
 		--network $NETWORK \
 		validator \
 		$METRICS_PARAMS \
-		--beacon-nodes $VOTING_ETH2_NODES
+		--beacon-nodes $VOTING_ETH2_NODES \
+		$DOPPELGANGER_PROTECTION
 fi
