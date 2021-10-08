@@ -48,6 +48,10 @@ if [ "$ENABLE_FULL_NETWORK_VIEW" != "" ]; then
 	ENABLE_FULL_NETWORK_VIEW_PARAMS="--subscribe-all-subnets --import-all-attestations"
 fi
 
+if [ "$CHECKPOINT_SYNC_URL" != "" ]; then
+	CHECKPOINT_SYNC_URL_PARAM="--checkpoint-sync-url $CHECKPOINT_SYNC_URL"
+fi
+
 exec lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	--network $NETWORK \
@@ -64,4 +68,5 @@ exec lighthouse \
 	$ENABLE_MONITORING_AUTO_FLAG \
 	$ENABLE_MONITORING_MANUAL_PARAMS \
 	$ENABLE_FULL_NETWORK_VIEW_PARAMS \
-	$MONITORING_SERVICE_PARAMS
+	$MONITORING_SERVICE_PARAMS \
+	$CHECKPOINT_SYNC_URL_PARAM
