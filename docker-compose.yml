@@ -21,6 +21,7 @@ services:
             - ./lighthouse-data:/root/.lighthouse
             - ./scripts:/root/scripts:ro
             - ./validator_keys:/root/validator_keys:ro
+            - ./fee_recipient:/root/fee_recipient:ro
         depends_on:
             - beacon_node
         ports:

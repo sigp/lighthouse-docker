@@ -52,6 +52,10 @@ if [ "$CHECKPOINT_SYNC_URL" != "" ]; then
 	CHECKPOINT_SYNC_URL_PARAM="--checkpoint-sync-url $CHECKPOINT_SYNC_URL"
 fi
 
+if [ "$SUGGESTED_FEE_RECIPIENT_BN" != "" ]; then
+	FEE_RECIPIENT="--suggested-fee-recipient $SUGGESTED_FEE_RECIPIENT_BN"
+fi
+
 exec lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	--network $NETWORK \
@@ -69,4 +73,5 @@ exec lighthouse \
 	$ENABLE_MONITORING_MANUAL_PARAMS \
 	$ENABLE_FULL_NETWORK_VIEW_PARAMS \
 	$MONITORING_SERVICE_PARAMS \
-	$CHECKPOINT_SYNC_URL_PARAM
+	$CHECKPOINT_SYNC_URL_PARAM \
+	$FEE_RECIPIENT
