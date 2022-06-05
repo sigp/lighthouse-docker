@@ -15,10 +15,6 @@ if [ "$ENABLE_DOPPELGANGER_PROTECTION" != "" ]; then
   DOPPELGANGER_PROTECTION="--enable-doppelganger-protection "
 fi
 
-if [ "$ENABLE_DOPPELGANGER_PROTECTION" != "" ]; then
-  DOPPELGANGER_PROTECTION="--enable-doppelganger-protection "
-fi
-
 if [ "$SUGGESTED_FEE_RECIPIENT_FILE" != "" ]; then
   FEE_RECIPIENT_FILE="--suggested-fee-recipient-file /root/fee_recipient/fee_recipient.txt"
 fi
