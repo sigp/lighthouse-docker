@@ -17,6 +17,8 @@ the validator keys, beacon node database and other Lighthouse files.
 
 ## Configuration
 
+### .env
+
 The docker-compose file requires that a `.env` file be present in this
 directory. The `default.env` file provides a template and can be copied `.env`:
 
@@ -29,3 +31,9 @@ Failure to create an `.env` file will result in the following error:
 ```
 ERROR: Couldn't find env file: /home/karlm/lighthouse-docker/.env
 ```
+
+### Generating a JWT Token
+
+To enable communication between the execution client and the consensus client using the new Engine API you need to generate a JWT Token to be used for communication.
+
+This is easiest achieved by running `./generate-jwt.sh` which will create a `jwttoken` file with your generated key, this key is automatically passed to the clients inside the containers.

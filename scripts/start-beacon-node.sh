@@ -52,13 +52,18 @@ if [ "$CHECKPOINT_SYNC_URL" != "" ]; then
 	CHECKPOINT_SYNC_URL_PARAM="--checkpoint-sync-url $CHECKPOINT_SYNC_URL"
 fi
 
+if [ "$SUGGESTED_FEE_RECIPIENT" != ""]; then
+  FEE_RECIPIENT="--suggested-fee-recipient $SUGGESTED_FEE_RECIPIENT"
+fi
+
 exec lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	--network $NETWORK \
 	beacon_node \
-	--eth1-endpoints $VOTING_ETH1_NODES \
 	--http \
 	--http-address 0.0.0.0 \
+	--execution-endpoint $EXECUTION_ENDPOINT \
+	--execution-jwt /root/jwttoken \
 	$METRICS_PARAMS \
 	$GRAFFITI_PARAM \
 	$ETH1_FLAG \
@@ -69,4 +74,5 @@ exec lighthouse \
 	$ENABLE_MONITORING_MANUAL_PARAMS \
 	$ENABLE_FULL_NETWORK_VIEW_PARAMS \
 	$MONITORING_SERVICE_PARAMS \
-	$CHECKPOINT_SYNC_URL_PARAM
+	$CHECKPOINT_SYNC_URL_PARAM \
+	$FEE_RECIPIENT

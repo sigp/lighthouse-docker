@@ -15,6 +15,10 @@ if [ "$ENABLE_DOPPELGANGER_PROTECTION" != "" ]; then
   DOPPELGANGER_PROTECTION="--enable-doppelganger-protection "
 fi
 
+if [ "$SUGGESTED_FEE_RECIPIENT" != ""]; then
+  FEE_RECIPIENT="--suggested-fee-recipient $SUGGESTED_FEE_RECIPIENT"
+fi
+
 # Base dir
 DATADIR=/root/.lighthouse/$NETWORK
 
@@ -70,5 +74,6 @@ if [ "$START_VALIDATOR" != "" ]; then
 		$METRICS_PARAMS \
 		$MONITORING_SERVICE_PARAMS \
 		--beacon-nodes $VOTING_ETH2_NODES \
-		$DOPPELGANGER_PROTECTION
+		$DOPPELGANGER_PROTECTION \
+		$FEE_RECIPIENT
 fi

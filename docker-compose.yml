@@ -6,6 +6,7 @@ services:
         volumes:
             - ./lighthouse-data:/root/.lighthouse
             - ./scripts:/root/scripts:ro
+            - ./jwttoken:/root/jwttoken:ro
         ports:
             - 5052:5052/tcp
             - 5053:5053/tcp
@@ -34,6 +35,7 @@ services:
         volumes:
             - ./geth-data:/root/.ethereum
             - ./scripts:/root/scripts:ro
+            - ./jwttoken:/root/jwttoken:ro
         ports:
             - 30303:30303/tcp
             - 30303:30303/udp
