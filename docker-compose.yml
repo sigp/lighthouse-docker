@@ -39,6 +39,8 @@ services:
         ports:
             - 30303:30303/tcp
             - 30303:30303/udp
+        expose:
+            - 8551
         env_file: .env
         command: /root/scripts/start-geth.sh
         restart: on-failure
