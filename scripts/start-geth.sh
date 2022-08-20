@@ -11,8 +11,8 @@ fi
 
 if [ "$START_GETH" != "" ]; then
 	if [ "$NETWORK" != "$DEFAULT_NETWORK" ]; then
-		exec geth --goerli --http --http.addr "0.0.0.0" --http.vhosts=* --http.api "eth,net" --ipcdisable --authrpc.jwtsecret /root/jwttoken
+		exec geth --goerli --http --http.addr "0.0.0.0" --http.vhosts=* --http.api "eth,net" --ipcdisable --authrpc.addr "0.0.0.0" --authrpc.jwtsecret /root/jwttoken
 	else
-		exec geth --syncmode snap --http --http.addr "0.0.0.0" --http.vhosts=* --http.api "eth,net" --ipcdisable --authrpc.jwtsecret /root/jwttoken
+		exec geth --syncmode snap --http --http.addr "0.0.0.0" --http.vhosts=* --http.api "eth,net" --ipcdisable --authrpc.addr "0.0.0.0" --authrpc.jwtsecret /root/jwttoken
 	fi
 fi
