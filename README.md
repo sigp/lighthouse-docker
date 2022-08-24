@@ -1,3 +1,19 @@
+### 🚨 DEPRECATION NOTICE 🚨
+
+As of August 2022 Sigma Prime will no longer maintain `lighthouse-docker`. This decision was made
+to better focus on development of the core client. We _will_ continue to provide official Docker
+images.
+
+If you are currently using `lighthouse-docker` you need to either migrate to the community-fork,
+or `eth-docker`. You must do this before the mainnet merge in September 2022.
+
+1. Community-maintained fork of `lighthouse-docker` by @kimpers: https://github.com/kimpers/lighthouse-docker
+2. Guide for migrating to `eth-docker`: https://hackmd.io/@sproul/lighthouse-docker-migration
+
+The original README is preserved below.
+
+---
+
 # Lighthouse Docker
 
 Provides a `docker-compose` environment for running Lighthouse.
